@@ -15,10 +15,10 @@ class ProductSupplier:
 
 class PurchaseRequest:
     __name__ = 'purchase.request'
-    multiple_quantity = fields.Function(fields.Float('Multiple Quantity',
-            on_change_with=['supplier', 'product']),
+    multiple_quantity = fields.Function(fields.Float('Multiple Quantity'),
         'on_change_with_multiple_quantity')
 
+    @fields.depends('supplier', 'product')
     def on_change_with_multiple_quantity(self, name):
         if not self.product:
             return
