@@ -31,8 +31,9 @@ class CreatePurchase:
     __name__ = 'purchase.request.create_purchase'
 
     @classmethod
-    def compute_purchase_line(cls, request):
-        line = super(CreatePurchase, cls).compute_purchase_line(request)
+    def compute_purchase_line(cls, request, purchase):
+        line = super(CreatePurchase, cls).compute_purchase_line(request,
+            purchase)
         if request.multiple_quantity:
             line.quantity = (math.ceil(line.quantity /
                     request.multiple_quantity) * request.multiple_quantity)
