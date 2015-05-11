@@ -1,0 +1,11 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.product_supplier,multiple_quantity:"
+msgid "Multiple Quantity"
+msgstr "Quantitat múltiple"
+
+msgctxt "field:purchase.request,multiple_quantity:"
+msgid "Multiple Quantity"
+msgstr "Quantitat múltiple"
