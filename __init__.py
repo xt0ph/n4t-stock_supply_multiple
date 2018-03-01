@@ -1,14 +1,14 @@
-#The COPYRIGHT file at the top level of this repository contains the full
-#copyright notices and license terms.
+# The COPYRIGHT file at the top level of this repository contains the full
+# copyright notices and license terms.
 from trytond.pool import Pool
-from .purchase import *
+from . import purchase
 
 
 def register():
     Pool.register(
-        ProductSupplier,
-        PurchaseRequest,
+        purchase.ProductSupplier,
+        purchase.PurchaseRequest,
         module='stock_supply_multiple', type_='model')
     Pool.register(
-        CreatePurchase,
+        purchase.CreatePurchase,
         module='stock_supply_multiple', type_='wizard')

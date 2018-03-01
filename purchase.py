@@ -1,25 +1,26 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 import math
 from trytond.model import fields
 from trytond.pool import PoolMeta
 
 __all__ = ['ProductSupplier', 'PurchaseRequest', 'CreatePurchase']
-__metaclass__ = PoolMeta
 
 
 class ProductSupplier:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.product_supplier'
     multiple_quantity = fields.Float('Multiple Quantity')
 
 
 class PurchaseRequest:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.request'
     multiple_quantity = fields.Function(fields.Float('Multiple Quantity'),
         'on_change_with_multiple_quantity')
 
     @fields.depends('supplier', 'product')
-    def on_change_with_multiple_quantity(self, name):
+    def on_change_with_multiple_quantity(self, name=None):
         if not self.product:
             return
         for product_supplier in self.product.product_suppliers:
@@ -28,6 +29,7 @@ class PurchaseRequest:
 
 
 class CreatePurchase:
+    __metaclass__ = PoolMeta
     __name__ = 'purchase.request.create_purchase'
 
     @classmethod
