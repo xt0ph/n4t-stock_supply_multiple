@@ -7,14 +7,12 @@ from trytond.pool import PoolMeta
 __all__ = ['ProductSupplier', 'PurchaseRequest', 'CreatePurchase']
 
 
-class ProductSupplier:
-    __metaclass__ = PoolMeta
+class ProductSupplier(metaclass=PoolMeta):
     __name__ = 'purchase.product_supplier'
     multiple_quantity = fields.Float('Multiple Quantity')
 
 
-class PurchaseRequest:
-    __metaclass__ = PoolMeta
+class PurchaseRequest(metaclass=PoolMeta):
     __name__ = 'purchase.request'
     multiple_quantity = fields.Function(fields.Float('Multiple Quantity'),
         'on_change_with_multiple_quantity')
@@ -28,8 +26,7 @@ class PurchaseRequest:
                 return product_supplier.multiple_quantity
 
 
-class CreatePurchase:
-    __metaclass__ = PoolMeta
+class CreatePurchase(metaclass=PoolMeta):
     __name__ = 'purchase.request.create_purchase'
 
     @classmethod
