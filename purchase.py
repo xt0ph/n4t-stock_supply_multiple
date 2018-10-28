@@ -30,10 +30,13 @@ class CreatePurchase(metaclass=PoolMeta):
     __name__ = 'purchase.request.create_purchase'
 
     @classmethod
-    def compute_purchase_line(cls, request, purchase):
-        line = super(CreatePurchase, cls).compute_purchase_line(request,
+    def compute_purchase_line(cls, requests, purchase):
+        line = super(CreatePurchase, cls).compute_purchase_line(requests,
             purchase)
-        if request.multiple_quantity:
+        multiples = [x.multiple_quantity for x in requests if
+                x.multiple_quantity]
+        if multiples:
+            multiple_quantity = max(multiples)
             line.quantity = (math.ceil(line.quantity /
-                    request.multiple_quantity) * request.multiple_quantity)
+                    multiple_quantity) * multiple_quantity)
         return line
