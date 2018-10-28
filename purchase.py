@@ -33,8 +33,8 @@ class CreatePurchase:
     __name__ = 'purchase.request.create_purchase'
 
     @classmethod
-    def compute_purchase_line(cls, requests, purchase):
-        line = super(CreatePurchase, cls).compute_purchase_line(requests,
+    def compute_purchase_line(cls, key, requests, purchase):
+        line = super(CreatePurchase, cls).compute_purchase_line(key, requests,
             purchase)
         multiples = [x.multiple_quantity for x in requests if
                 x.multiple_quantity]
