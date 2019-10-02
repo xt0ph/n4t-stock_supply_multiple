@@ -21,7 +21,7 @@ class PurchaseRequest(metaclass=PoolMeta):
     def on_change_with_multiple_quantity(self, name=None):
         if not self.product:
             return
-        for product_supplier in self.product.product_suppliers:
+        for product_supplier in self.product.product_suppliers_used():
             if product_supplier.party == self.party:
                 return product_supplier.multiple_quantity
 
